@@ -1,53 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const { posts } = require("../data/posts");
+const postController = require("../controllers/controller");
+
 // INDEX
-router.get("/", (req, res) => {
-  res.json({
-    description: "Ecco la lista degli elementi",
-    data: posts,
-  });
-});
+router.get("/", postController.index);
 
 // SHOW
-router.get("/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const post = posts.find((currentPost) => currentPost.id === id);
-  res.json({
-    description: `${post.title}`,
-    data: post,
-  });
-});
+router.get("/:id", postController.show);
 
 // STORE
-router.post("/", (req, res) => {
-  res.json({
-    description: "Creazione di un nuovo elemento",
-  });
-});
+router.post("/", postController.store);
 
 // UPDATE
-router.put("/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  res.json({
-    description: `Modifica dell'elemento ${id}`,
-  });
-});
+router.put("/:id", postController.update);
 
 // MODIFY
-router.patch("/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  res.json({
-    description: `Modifica parziale dell'elemento ${id}`,
-  });
-});
+router.patch("/:id", postController.modify);
 
 // DESTROY
-router.delete("/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  res.json({
-    description: `Cancellazione dell'elemento ${id}`,
-  });
-});
+router.delete("/:id", postController.destroy);
 
 module.exports = router;
