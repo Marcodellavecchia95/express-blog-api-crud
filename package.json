@@ -1,0 +1,24 @@
+{
+  "name": "express-blog-intro",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "watch": "node --watch app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcodellavecchia95/express-blog-intro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcodellavecchia95/express-blog-intro/issues"
+  },
+  "homepage": "https://github.com/Marcodellavecchia95/express-blog-intro#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
