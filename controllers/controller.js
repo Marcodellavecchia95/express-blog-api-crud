@@ -38,9 +38,21 @@ const modify = (req, res) => {
 
 const destroy = (req, res) => {
   const id = parseInt(req.params.id);
-  res.json({
-    description: `Cancellazione dell'elemento ${id}`,
-  });
+  const post = posts.find((post) => post.id === id);
+
+  if (!post) {
+    res.status(404).json({
+      error: "404, non trovato",
+      message: "Post non trovato",
+    });
+    return;
+  }
+
+  const postIndex = posts.indexOf(post);
+  posts.splice(postIndex, 1);
+
+  res.sendStatus(204);
+  console.log(posts);
 };
 
 module.exports = { index, show, store, update, modify, destroy };
