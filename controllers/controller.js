@@ -40,10 +40,20 @@ const show = (req, res) => {
 };
 
 const store = (req, res) => {
+  let { title, content, image, tags } = req.body;
+  let newPost = {
+    title,
+    content,
+    image,
+    tags,
+  };
+
+  posts.push(newPost);
+
   res.json({
-    description: "Creazione di un nuovo elemento",
+    message: "Hai aggiunto un nuovo post",
+    data: newPost,
   });
-  console.log(req.body);
 };
 
 const update = (req, res) => {
