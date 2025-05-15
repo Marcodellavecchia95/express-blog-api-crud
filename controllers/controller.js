@@ -40,8 +40,11 @@ const show = (req, res) => {
 };
 
 const store = (req, res) => {
+  let newId = posts.length + 1;
+
   let { title, content, image, tags } = req.body;
   let newPost = {
+    id: newId,
     title,
     content,
     image,
@@ -58,8 +61,31 @@ const store = (req, res) => {
 
 const update = (req, res) => {
   const id = parseInt(req.params.id);
+  const post = posts.find((post) => post.id === id);
+  const postIndex = posts.indexOf(post);
+
+  if (!post) {
+    res.status(404).json({
+      error: "404, not found",
+      message: "Post non trovato",
+    });
+    return;
+  }
+
+  let { title, content, image, tags } = req.body;
+  let newPost = {
+    id,
+    title,
+    content,
+    image,
+    tags,
+  };
+
+  posts.splice(postIndex, 1, newPost);
+
   res.json({
-    description: `Modifica dell'elemento ${id}`,
+    newPost,
+    data: posts,
   });
 };
 
