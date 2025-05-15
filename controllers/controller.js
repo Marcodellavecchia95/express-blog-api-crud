@@ -43,6 +43,7 @@ const store = (req, res) => {
   res.json({
     description: "Creazione di un nuovo elemento",
   });
+  console.log(req.body);
 };
 
 const update = (req, res) => {
